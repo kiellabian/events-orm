@@ -28,8 +28,15 @@ class Event(models.Model):
     when_event_start = models.DateTimeField(null=True, blank=True)
     when_event_end = models.DateTimeField(null=True, blank=True)
 
+    def __unicode__(self):
+        return self.title
+
 
 class EventDonation(models.Model):
     owner = models.ForeignKey(User, related_name='donations')
     event = models.ForeignKey(Event, related_name='donations')
     amount = models.FloatField(default=0.0)
+
+    def __unicode__(self):
+        return '{0} donated ${1} to {2}'.format(
+            self.owner, self.amount, self.event)
