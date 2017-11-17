@@ -3,27 +3,8 @@ from random import randrange
 from datetime import datetime
 from django.utils.timezone import timedelta
 from django.contrib.auth.models import User
-from django.contrib.admin import ModelAdmin
 
 from models import Event, EventDonation
-
-
-class ReadOnlyAdmin(ModelAdmin):
-
-    def has_add_permission(self, request):
-        return False
-
-    def has_delete_permission(self, request, obj=None):
-        return False
-
-    def save_model(self, request, obj, form, change):
-        pass
-
-    def delete_model(self, request, obj):
-        pass
-
-    def save_related(self, request, form, formsets, change):
-        pass
 
 
 def random_time():
