@@ -18,10 +18,8 @@ class Event(models.Model):
     title = models.CharField(max_length=256)
     owner = models.ForeignKey(User, related_name='events')
     removed = models.BooleanField(default=False)
-    when_created = models.DateTimeField(auto_now=True)
     participants = models.ManyToManyField(
         User, related_name='participated_events')
-    expected_donation_goal = models.FloatField(default=0.0)
 
     status = models.PositiveIntegerField(
         choices=EVENT_STATUS_CHOICES, default=0)
